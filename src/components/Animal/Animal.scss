@@ -1,0 +1,13 @@
+.animal{
+    width: 30%;
+
+    &__image-container{
+        width: 100%;
+        
+        img{
+            width: 260px;
+            height: 200px;
+            border: 1px solid grey;
+        }
+    }
+}

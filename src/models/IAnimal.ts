@@ -2,5 +2,9 @@ export interface IAnimal{
     id: number;
     name: string;
     imageUrl: string;
-    shortDescription: string;
+    longDescription: string;
+    yearOfBirth: number;
+    medicine: string;
+    isFed: boolean;
+    lastFed: string;
 }
