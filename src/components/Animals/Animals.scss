@@ -2,6 +2,18 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    margin: 2rem auto;
     align-items: center;
-    gap: 50px;
+    gap: 30px;
+}
+
+.title{
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    margin-bottom: 70px;
+    width: 20%;
+    font-size: 70px;
+    border: 20px dotted rgb(208, 255, 208);
+    padding: 1em;
 }

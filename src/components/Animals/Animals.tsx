@@ -27,6 +27,7 @@ export const Animals = () => {
 
     return(
         <>
+            <h1 className="title">My zoo</h1>
             <div className="animals">{animalsHtml}</div>
         </>
     );
