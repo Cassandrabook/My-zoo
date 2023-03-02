@@ -11,10 +11,13 @@ export const AnimalDetail = ()=> {
     const [timeToEat, setTimeToEat] = useState<Date>();
     const [lastFed, setLastFed] = useState("");
     const [fedTime, setFedTime] = useState("");
+    const [buttondisabled, setButtondisabled] = useState(false);
+
 
     localStorage.setItem("animal", JSON.stringify(animal));
 
     const {id} = useParams();
+
     useEffect(() => {
         const getData = async () => {
             if (id) {
@@ -28,28 +31,27 @@ export const AnimalDetail = ()=> {
             }
         };
 
+        const rightNow = new Date();
+        const previousFeedTime = localStorage.getItem(String(animal?.id));
+        const previous = new Date(previousFeedTime!);
+
+        if(previous.getHours() + 3 < rightNow.getHours()){
+            setButtondisabled(true);
+            
+        }
+        
+        console.log(previous);
         if (animal) return;
-        getData(); 
+        getData();
     });
-
-    const rightNow = new Date();
-    const previousFeedTime = localStorage.getItem(String(animal?.id));
-    const previous = new Date(previousFeedTime!);
-
-    // localStorage.setItem(String(animal?.id), new Date().toString());
 
     function feedAnimal(){
 
-        let loggedTime : any = localStorage.setItem(String(animal?.id), rightNow.toString());
-
-        if(previous.getHours() + 3 < rightNow.getHours()){
-            console.log("logged");
-            
-            setLastFed(loggedTime); 
-        };
-
         setIsFed(true);   
-    //     localStorage.setItem(String(animal?.id), new Date().toString());
+        localStorage.setItem(String(animal?.id), new Date().toString());
+        setButtondisabled(true);
+
+        setFedTime(new Date().toString());
     }
 
     console.log(isFed);
@@ -71,8 +73,8 @@ export const AnimalDetail = ()=> {
                             <p className='animalDetail__desc'>{animal?.longDescription}</p>
                             <p className='animalDetail__birthday'><span>Födelseår: </span>{animal?.yearOfBirth}</p>
                             <p className='animalDetail__medicine'><span>Mediciner: </span>{animal?.medicine}</p>
-                            <p>{isFed ? <span>Matad senast:</span> : <span>Matad:</span>} {animal?.lastFed}</p>
-                            <button className='animalDetail__btn' onClick={feedAnimal}>Mata {animal?.name}</button>
+                            <p>Matad: {fedTime} </p>
+                            <button className='animalDetail__btn' disabled={buttondisabled} onClick={feedAnimal}>Mata {animal?.name}</button>
                             <p></p>
                             
                         </div>
