@@ -11,11 +11,9 @@ export const Animals = () => {
     useEffect(() => {
         const getData = async () => {
             let animals = await getAnimals();
-
             setAnimals(animals);
         }
         if (animals.length > 0) return;
-
         getData();
     })
 
@@ -25,7 +23,6 @@ export const Animals = () => {
             localStorage.setItem("Animals", JSON.stringify(animals));
         }
     }, [animals]);
-
 
     let animalsHtml = animals.map((animal) => {
         return(

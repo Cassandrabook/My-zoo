@@ -14,7 +14,6 @@ export const AnimalDetail = () => {
     
     useEffect( () => {
       const getData = async () => {
-        console.log("test");
         
         if (id) {
             let response = await getAnimals();
@@ -33,35 +32,25 @@ export const AnimalDetail = () => {
       }else{
         getData();
       }
-      
-
     }, []);
 
     useEffect(() => {
       const animal = animals.find((animal:IAnimal) => animal.id === Number(id)) || null;
-      console.log(animal);
       
         if(animal){
-
           setFedTime(animal.lastFed);
-
           setPet(animal);
+
           const timeRightNow = new Date();
           const lastFoodTime = new Date(animal.lastFed);
 
-          if(lastFoodTime.getMinutes() + 1 < timeRightNow.getMinutes()){
+          if(lastFoodTime.getHours() + 3 < timeRightNow.getHours()){
             setButtondisabled(false); 
-            console.log("test");
-             
           }else{
             setButtondisabled(true);
           };
-          console.log(animal.lastFed, timeRightNow);
-          console.log(lastFoodTime);
-          
         }   
     }, [animals])
-
 
       const handleFeedClick = () => {
         const timeElapsed = Date.now();
@@ -75,7 +64,6 @@ export const AnimalDetail = () => {
               lastFed: rightNowAsString,
             };
           }
-          
           return animal;
         });
       
@@ -83,11 +71,8 @@ export const AnimalDetail = () => {
         setAnimals(updatedTime);  
         setButtondisabled(true); 
         setFedTime(rightNowAsString);
-           
       };
    
-    
-
     return(
             <>
                 {error !== "" ? (

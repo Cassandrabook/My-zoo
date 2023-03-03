@@ -22,12 +22,11 @@ export const Animal = (props: IAnimalProps)=> {
             if(animal){
                 const lastfed = new Date(animal.lastFed);
                 const rightnow = new Date();
-                console.log(lastfed);
 
                 if(lastfed.getHours() + 3 < rightnow.getHours()){
-                    return false;
-                }else{
                     return true;
+                }else{
+                    return false;
                 }
             }
         } 
