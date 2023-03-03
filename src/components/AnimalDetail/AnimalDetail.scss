@@ -1,13 +1,15 @@
 .animalDetail{
     display: flex;
-    flex-direction: column;
+    justify-content: center;
     align-items: center;
+    margin: 0 auto;
+    gap: 40px;
     padding: 2rem;
+    width: 1200px;
     background-color: rgb(208, 255, 208);
+    box-shadow: 0 0 10px rgb(199, 199, 199);
 
     &__image{
-        
-
         img{
             width: 500px;
             height: 350px;
@@ -17,17 +19,11 @@
     &__text-container{
         display: flex;
         flex-direction: column;
-        align-items: center;
     }
 
     &__desc{
-        width: 700px;
-        text-align: center;
-        line-height:1.3rem;
-    }
-
-    &__birthday{
-
+        width: 600px;
+        line-height:1.5rem;
     }
     
     span{

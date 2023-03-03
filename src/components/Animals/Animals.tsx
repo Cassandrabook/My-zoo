@@ -19,6 +19,14 @@ export const Animals = () => {
         getData();
     })
 
+    useEffect(() => {
+        const localStorageAnimals = JSON.parse(localStorage.getItem("Animals") || "[]");
+        if (localStorageAnimals.length === 0) {
+            localStorage.setItem("Animals", JSON.stringify(animals));
+        }
+    }, [animals]);
+
+
     let animalsHtml = animals.map((animal) => {
         return(
             <Animal animal={animal} key={animal.id} />
@@ -27,7 +35,7 @@ export const Animals = () => {
 
     return(
         <>
-            <h1 className="title">My zoo</h1>
+            <h1 className="title"> Welcome To Zoo Pawsible</h1>
             <div className="animals">{animalsHtml}</div>
         </>
     );
