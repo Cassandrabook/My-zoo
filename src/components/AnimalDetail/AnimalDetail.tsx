@@ -41,16 +41,31 @@ export const AnimalDetail = () => {
           setFedTime(animal.lastFed);
           setPet(animal);
 
-          const timeRightNow = new Date();
-          const lastFoodTime = new Date(animal.lastFed);
+          // const timeRightNow = new Date();
+          // const lastFoodTime = new Date(animal.lastFed);
 
-          if(lastFoodTime.getHours() + 3 < timeRightNow.getHours()){
-            setButtondisabled(false); 
+          // if(lastFoodTime.getMinutes() + 1 < timeRightNow.getMinutes()){
+          //     setButtondisabled(false); 
+          //   }else{
+          //     setButtondisabled(true);
+          //   };
+
+          const lastFed = new Date(animal.lastFed);
+          const rightNow = new Date();
+          const timeDiffInMs = rightNow.getTime() - lastFed.getTime();
+          const diffInHours = timeDiffInMs;
+          console.log(timeDiffInMs);
+          
+
+          if(diffInHours > 3){
+            console.log(diffInHours);
+            
+            setButtondisabled(false);
           }else{
             setButtondisabled(true);
-          };
+          }
         }   
-    }, [animals])
+    }, [animals]);
 
       const handleFeedClick = () => {
         const timeElapsed = Date.now();
