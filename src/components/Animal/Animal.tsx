@@ -20,12 +20,6 @@ export const Animal = (props: IAnimalProps)=> {
             const array = JSON.parse(animals);
             const animal = array.find((animal:IAnimal) => animal.id === Number(props.animal.id)) || null;
             if(animal){
-                // if(lastfed.getHours() + 3 < rightnow.getHours()){
-                //     return true;
-                // }else{
-                //     return false;
-                // }
-
                 const lastFed = new Date(animal.lastFed);
                 const rightNow = new Date();
 
@@ -33,8 +27,6 @@ export const Animal = (props: IAnimalProps)=> {
                 const diffInSeconds = timeDiffInMs / 1000; 
                 const diffInMinutes = diffInSeconds / 60;
                 const diffInHours = diffInMinutes / 60;
-                console.log({diffInMinutes});
-                
 
                 if(diffInHours > 3){
                     return false;
@@ -53,7 +45,7 @@ export const Animal = (props: IAnimalProps)=> {
                     <img src={props.animal.imageUrl} alt={props.animal.name} />
                 </div>
                 <p className="animal__desc">{props.animal.shortDescription}</p>
-                <p className="animal__foodTime">{isFeed() ? <span>Mätt</span> : <span className="isHungry">Hungrig</span>}</p>
+                <p className="animal__foodTime">{isFeed() ? <span>{props.animal.name} är mätt</span> : <span className="isHungry">{props.animal.name} är hungrig</span>}</p>
                 <button className="animal__btn-readMore" onClick={showAnimal}>Läs mer</button>
             </div>
         </>

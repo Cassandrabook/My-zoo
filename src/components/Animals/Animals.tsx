@@ -4,7 +4,6 @@ import { getAnimals } from "../../services/AnimalService";
 import { Animal } from "../Animal/Animal";
 import './Animals.scss';
 
-
 export const Animals = () => {
     const [animals, setAnimals] = useState<IAnimalSmall[]>([]);
 
