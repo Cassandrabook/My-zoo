@@ -20,9 +20,6 @@ export const Animal = (props: IAnimalProps)=> {
             const array = JSON.parse(animals);
             const animal = array.find((animal:IAnimal) => animal.id === Number(props.animal.id)) || null;
             if(animal){
-                // const lastfed = new Date(animal.lastFed);
-                // const rightnow = new Date();
-
                 // if(lastfed.getHours() + 3 < rightnow.getHours()){
                 //     return true;
                 // }else{
@@ -31,15 +28,18 @@ export const Animal = (props: IAnimalProps)=> {
 
                 const lastFed = new Date(animal.lastFed);
                 const rightNow = new Date();
+
                 const timeDiffInMs = rightNow.getTime() - lastFed.getTime();
-                const diffInHours = timeDiffInMs;
-                console.log(timeDiffInMs);
+                const diffInSeconds = timeDiffInMs / 1000; 
+                const diffInMinutes = diffInSeconds / 60;
+                const diffInHours = diffInMinutes / 60;
+                console.log({diffInMinutes});
                 
 
                 if(diffInHours > 3){
-                    return(true);
+                    return false;
                 }else{
-                    return(false);
+                    return true;
                 }
             }
         } 

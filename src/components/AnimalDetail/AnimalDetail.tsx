@@ -52,14 +52,13 @@ export const AnimalDetail = () => {
 
           const lastFed = new Date(animal.lastFed);
           const rightNow = new Date();
+
           const timeDiffInMs = rightNow.getTime() - lastFed.getTime();
-          const diffInHours = timeDiffInMs;
-          console.log(timeDiffInMs);
-          
+          const diffInSeconds = timeDiffInMs / 1000; 
+          const diffInMinutes = diffInSeconds / 60;
+          const diffInHours = diffInMinutes / 60;
 
           if(diffInHours > 3){
-            console.log(diffInHours);
-            
             setButtondisabled(false);
           }else{
             setButtondisabled(true);
