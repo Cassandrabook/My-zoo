@@ -1,0 +1,33 @@
+@use './breakpoints' as b;
+@use './fonts' as f;
+@use './colors' as c;
+@use './variables' as v;
+
+@mixin btn-readMore {
+    &__btn-readMore{
+        background-color: c.$btn-bg-color;
+        border-radius: 30px;
+        border: c.$btn-border;
+        padding: 10px;
+        font-size: 18px;
+        cursor: pointer;
+        transition: all ease 0.4s;
+    }
+
+    &__btn-readMore:hover{
+        background-color: c.$btn-bg-hover;
+        color: c.$background-color;
+    }
+}
+
+@mixin btn-fedAnimal {
+    &__btn{
+        background-color: c.$btn-bg-color;
+        border: c.$btn-feed-border;
+        padding: 1rem;
+        cursor: pointer;
+        outline: none;
+        font-size: 15px;
+        border-radius: 30px;
+    }
+}

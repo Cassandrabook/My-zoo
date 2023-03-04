@@ -1,21 +1,46 @@
+@use './../../styling/colors' as c;
+@use './../../styling/breakpoints' as b;
+
 .animals{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin: 2rem auto;
-    align-items: center;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
     gap: 30px;
+    padding: 1rem;
+    
+    @include b.small{
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include b.medium{
+        grid-template-columns: repeat(4, 1fr);
+        padding: 0px 2em 2em;
+        align-items: center; 
+    }
 }
 
 .title{
     display: flex;
     justify-content: center;
     margin: 0 auto;
-    margin-bottom: 70px;
+    margin-bottom: 30px;
     text-align: center;
     line-height: 1.7em;
-    width: 500px;
-    font-size: 70px;
-    border: 20px dotted rgb(208, 255, 208);
+    width: 250px;
+    font-size: 40px;
+    border: c.$title-border-10;
     padding: 2rem;
+
+    @include b.small{
+        width: 380px;
+        font-size: 62px;
+        border: c.$title-border-15;
+        margin-bottom: 50px;
+    }
+
+    @include b.medium{
+        width: 500px;
+        font-size: 70px;
+        border: c.$title-border-20;
+        margin-bottom: 70px;
+    }
 }

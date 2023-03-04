@@ -84,9 +84,10 @@ export const AnimalDetail = () => {
                   <div className='animalDetail__text-container'>
                       <h2 className='animalDetail__name'>{pet?.name}</h2>
                       <p className='animalDetail__desc'>{pet?.longDescription}</p>
+                      <p>{pet?.name} kan matas igen efter 3 timmar.</p>
                       <p className='animalDetail__birthday'><span>Födelseår: </span>{pet?.yearOfBirth}</p>
                       <p className='animalDetail__medicine'><span>Mediciner: </span>{pet?.medicine}</p>
-                      <p><span>Matad: </span>{fedTime}</p>
+                      <p><span>Matad senast: </span>{fedTime}</p>
                       <button className='animalDetail__btn' disabled={buttondisabled} onClick={handleFeedClick}>Mata {pet?.name}</button>
                       <p></p>
                   </div>

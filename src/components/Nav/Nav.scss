@@ -1,6 +1,17 @@
+@use './../../styling/colors' as c;
+@use './../../styling/variables' as v;
+@use './../../styling/breakpoints' as b;
+@use './../../styling/mixins' as m;
+@use './../../styling/fonts' as f;
+
 .menu{
-    margin-right: 50px;
+    margin-right: 20px;
     margin-bottom: 30px;
+
+    @include b.medium{
+        margin-right: 50px;
+        margin-bottom: 30px;
+    }
 
     &__nav-container{
         display: flex;
@@ -14,16 +25,24 @@
 
     &__link{
         text-decoration: none;
-        color: black;
-        font-size: 20px;
-        border: 2px solid black;
+        color: c.$text-color;
+        font-size: 16px;
+        border: c.$btn-border;
         padding: 10px 20px;
         border-radius: 30px;
         transition: all ease 0.4s;
+
+        @include b.small{
+            font-size: 18px;
+        }
+
+        @include b.medium{
+            font-size: 20px;
+        }
     }
 
     &__link:hover{
-        background-color: black;
-        color: rgb(208, 255, 208);
+        background-color: c.$btn-bg-hover;
+        color: c.$background-color;
     }
 }

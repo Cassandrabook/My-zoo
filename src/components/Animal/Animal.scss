@@ -1,3 +1,9 @@
+@use './../../styling/colors' as c;
+@use './../../styling/variables' as v;
+@use './../../styling/breakpoints' as b;
+@use './../../styling/mixins' as m;
+@use './../../styling/fonts' as f;
+
 .animal{
     display: flex;
     flex-direction: column;
@@ -6,7 +12,7 @@
     height: 450px;
     margin: 0;
     padding: 1rem;
-    background-color: rgb(208, 255, 208);
+    background-color: c.$background-color;
     border-radius: 10px;
 
     &__title{
@@ -19,37 +25,32 @@
         height: 310px;
         
         img{
-            width: 300px;
+            width: 100%;
             height: 220px;
+
+            @include b.small{
+                width: 100%;
+            }
         }
     }
 
     &__desc{
-        width: 300px;
+        width: 100%;
         margin: 0;
         height: 100px;
-    }
 
-    &__foodTime{
-        color: green;
-
-        .isHungry{
-            color: red;
+        @include b.small{
+            width: 100%;
         }
     }
 
-    &__btn-readMore{
-        background-color: white;
-        border-radius: 30px;
-        border: 2px solid black;
-        padding: 10px;
-        font-size: 18px;
-        cursor: pointer;
-        transition: all ease 0.4s;
+    &__foodTime{
+        color: c.$noFood;
+
+        .isHungry{
+            color: c.$needsFood;
+        }
     }
 
-    &__btn-readMore:hover{
-        background-color: black;
-        color: rgb(208, 255, 208);
-    }
+    @include m.btn-readMore;
 }
