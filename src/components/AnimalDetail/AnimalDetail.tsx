@@ -88,7 +88,10 @@ export const AnimalDetail = () => {
                       <p className='animalDetail__birthday'><span>Födelseår: </span>{pet?.yearOfBirth}</p>
                       <p className='animalDetail__medicine'><span>Mediciner: </span>{pet?.medicine}</p>
                       <p><span>Matad senast: </span>{fedTime}</p>
-                      <button className='animalDetail__btn' disabled={buttondisabled} onClick={handleFeedClick}>Mata {pet?.name}</button>
+                      <button className='animalDetail__btn' 
+                        disabled={buttondisabled} 
+                        onClick={handleFeedClick}>
+                          {buttondisabled === true ? "Kom tillbaka om 3 timmar" : "Mata djuret"}</button>
                       <p></p>
                   </div>
               </div> 
